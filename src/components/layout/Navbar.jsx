@@ -1,68 +1,50 @@
 import { Menu, X, Sun, Moon, ChevronUp, ChevronDown } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import logo from "../../assets/logo.png";
+import logo from "../../assets/logo_largo.png";
 import { navItems } from "../../constants";
+
 const Navbar = ({ darkMode, setDarkMode }) => {
   const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(null);
 
   const toggleNavbar = () => {
     setMobileDrawerOpen(!mobileDrawerOpen);
-    // Resetear los dropdowns al abrir/cerrar el menú móvil
-    if (!mobileDrawerOpen) {
-      setDropdownOpen(null);
-    }
+    if (!mobileDrawerOpen) setDropdownOpen(null);
   };
 
   const closeNavbar = () => {
     setMobileDrawerOpen(false);
-    // Cerrar también los dropdowns al cerrar el navbar
     setDropdownOpen(null);
   };
 
   const toggleDropdown = (index) => {
-    if (dropdownOpen === index) {
-      setDropdownOpen(null);
-    } else {
-      setDropdownOpen(index);
-    }
+    setDropdownOpen(dropdownOpen === index ? null : index);
   };
 
-  // Función para manejar el clic en un enlace del menú móvil
   const handleMobileLinkClick = (item, index) => {
     if (item.dropdown) {
-      // Si tiene submenú, alternar su visibilidad
       toggleDropdown(index);
     } else {
-      // Si no tiene submenú, cerrar el menú móvil
       closeNavbar();
     }
   };
 
-  // Función para manejar el clic en un submenú
   const handleSubmenuClick = () => {
-    // Cerrar tanto el submenú como el menú móvil
     setDropdownOpen(null);
     setMobileDrawerOpen(false);
   };
 
   return (
-    <nav className="sticky top-0 z-50 py-3 backdrop-blur-lg bg-white/30 dark:bg-gray-950/30 border-b border-transparent">
+    <nav className="sticky top-0 z-50 py-3 backdrop-blur-lg bg-primary/80 text-text border-b border-border transition-colors duration-300">
       <div className="container px-4 mx-auto relative text-sm">
         <div className="flex justify-between items-center">
-          <Link
-            to="/"
-            className="flex items-center flex-shrink-0 text-blue-500 hover:text-blue-700 transition-colors dark:text-blue-300 dark:hover:text-blue-500"
-          >
-            <img className="h-10 w-10 mr-2" src={logo} alt="logo" />
-            <span
-              className="text-xl tracking-tight font-bold"
-              style={{ color: "#1D3561" }}
-            >
-              FARMEDICAL
-            </span>
+          {/* Logo */}
+          <Link to="/" className="flex items-center flex-shrink-0">
+            <img className="h-9 w-54 mr-2" src={logo} alt="logo" />
           </Link>
+
+          {/* Links Desktop */}
           <ul className="hidden lg:flex ml-14 space-x-4">
             {navItems.map((item, index) => (
               <li
@@ -72,24 +54,24 @@ const Navbar = ({ darkMode, setDarkMode }) => {
                 onMouseLeave={() => setDropdownOpen(null)}
               >
                 <Link
-                  className="text-base cursor-pointer py-3 dark:text-gray-200"
+                  className="text-text cursor-pointer py-3 hover:text-secondary transition-colors"
                   to={item.href}
                 >
                   {item.label}
                 </Link>
                 {item.dropdown && (
                   <ul
-                    className={`absolute left-1/2 transform -translate-x-1/2 mt-2 w-96 py-2 backdrop-blur-lg bg-white/90 dark:bg-gray-900/90 border-collapse rounded-lg shadow-2xl z-10 ${
+                    className={`absolute left-1/2 transform -translate-x-1/2 mt-2 w-96 py-2 backdrop-blur-lg bg-surface text-text rounded-lg shadow-2xl border border-border z-10 ${
                       dropdownOpen === index ? "block" : "hidden"
                     }`}
                   >
-                    {/* Flecha apuntando hacia arriba en forma de triángulo */}
-                    <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-8 border-r-8 border-b-8 border-transparent border-b-white/90 dark:border-b-gray-900/90"></div>
+                    {/* Flecha del dropdown */}
+                    <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-8 border-r-8 border-b-8 border-transparent border-b-surface"></div>
 
                     {item.dropdown.map((subItem, subIndex) => (
                       <li key={subIndex}>
                         <Link
-                          className="block px-4 py-2 text-base hover:bg-white/90 dark:hover:bg-gray-700 dark:text-gray-300"
+                          className="block px-4 py-2 text-text hover:bg-secondary hover:text-black rounded-md transition-colors"
                           to={subItem.href}
                         >
                           {subItem.label}
@@ -101,41 +83,41 @@ const Navbar = ({ darkMode, setDarkMode }) => {
               </li>
             ))}
           </ul>
+
+          {/* Botón tema + login (desktop) */}
           <div className="hidden lg:flex justify-center space-x-3 items-center text-center">
             <button
               onClick={() => setDarkMode(!darkMode)}
-              className="text-black dark:text-white rounded"
+              className="p-2 rounded hover:bg-secondary/20 transition-colors text-text"
             >
               {darkMode ? <Sun /> : <Moon />}
             </button>
-            {/* <Link to="/iniciar-sesion" className="py-2 px-3 border rounded-md backdrop-blur-md bg-white/30 dark:bg-gray-800 dark:text-gray-100">
-              Registrarse
-            </Link> */}
             <Link
               to="/iniciar-sesion/login"
-              className="text-white py-2 px-3 rounded-md bg-gradient-to-r from-sky-950 to-amber-600"
+              className="py-2 px-3 rounded-md bg-secondary text-black hover:opacity-90 transition-colors"
             >
-              Iniciar Sesion
+              Iniciar Sesión
             </Link>
           </div>
-          <div className="lg:hidden md:flex flex-col justify-end text-black dark:text-white">
+
+          {/* Botón menu móvil */}
+          <div className="lg:hidden md:flex flex-col justify-end text-text">
             <button onClick={toggleNavbar}>
               {mobileDrawerOpen ? <X /> : <Menu />}
             </button>
           </div>
         </div>
+
+        {/* Drawer móvil */}
         {mobileDrawerOpen && (
-          <div className="z-20 bg-white dark:bg-gray-900 w-full p-6 flex rounded-lg shadow-lg flex-col justify-center items-center lg:hidden">
+          <div className="z-20 bg-surface text-text w-full p-6 flex rounded-lg shadow-lg flex-col justify-center items-center lg:hidden transition-colors">
             <ul className="w-full">
               {navItems.map((item, index) => (
                 <li key={index} className="py-4 w-full">
-                  {/* Cambiamos el onClick para usar handleMobileLinkClick */}
                   <Link
-                    className="text-base w-full block dark:text-gray-200"
+                    className="text-text w-full block"
                     to={item.href}
-                    onClick={() => {
-                      handleMobileLinkClick(item, index);
-                    }}
+                    onClick={() => handleMobileLinkClick(item, index)}
                   >
                     <div className="flex justify-between items-center">
                       {item.label}
@@ -152,13 +134,13 @@ const Navbar = ({ darkMode, setDarkMode }) => {
                   </Link>
 
                   {item.dropdown && dropdownOpen === index && (
-                    <ul className="mt-2 ml-4 py-2 bg-white dark:bg-gray-800 border rounded-md shadow-lg">
+                    <ul className="mt-2 ml-4 py-2 bg-secondary text-black rounded-md shadow-lg">
                       {item.dropdown.map((subItem, subIndex) => (
                         <li key={subIndex}>
                           <Link
-                            className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+                            className="block px-4 py-2 text-sm hover:bg-primary hover:text-white rounded-md"
                             to={subItem.href}
-                            onClick={handleSubmenuClick} // Cerrar menú al seleccionar subopción
+                            onClick={handleSubmenuClick}
                           >
                             {subItem.label}
                           </Link>
@@ -169,21 +151,20 @@ const Navbar = ({ darkMode, setDarkMode }) => {
                 </li>
               ))}
             </ul>
-            <div className="flex space-x-6">
+
+            {/* Botones mobile */}
+            <div className="flex space-x-6 mt-4">
               <button
                 onClick={() => setDarkMode(!darkMode)}
-                className="text-black dark:text-white rounded"
+                className="p-2 rounded hover:bg-secondary/20 transition-colors text-text"
               >
                 {darkMode ? <Sun /> : <Moon />}
               </button>
-              {/* <Link to="/iniciar-sesion" className="py-2 px-3 border rounded-md dark:text-gray-200 dark:border-gray-700">
-                Registrarse
-              </Link> */}
               <Link
                 to="/iniciar-sesion/login"
-                className="text-white py-2 px-3 rounded-md bg-gradient-to-r from-sky-950 to-amber-600"
+                className="py-2 px-3 rounded-md bg-secondary text-black hover:opacity-90 transition-colors"
               >
-                Iniciar Sesion
+                Iniciar Sesión
               </Link>
             </div>
           </div>
