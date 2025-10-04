@@ -3,7 +3,7 @@ import { communityLinks, platformLinks, resourcesLinks } from "../../constants";
 
 const Footer = () => {
   return (
-    <footer className="mt-20 py-10 border-t border-border max-w-7xl mx-auto pt-6 px-6 bg-surface text-text transition-colors duration-300">
+    <footer className="mt-20 py-10 border-t border-border max-w-7xl mx-auto px-6 bg-surface text-text transition-colors duration-300">
       <div className="grid grid-cols-2 lg:grid-cols-3 gap-8">
         {/* Sobre nosotros */}
         <div>

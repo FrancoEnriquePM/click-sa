@@ -54,7 +54,7 @@ const Navbar = ({ darkMode, setDarkMode }) => {
                 onMouseLeave={() => setDropdownOpen(null)}
               >
                 <Link
-                  className="text-text cursor-pointer py-3 hover:text-secondary transition-colors"
+                  className="text-base cursor-pointer py-3 hover:text-secondary transition-colors"
                   to={item.href}
                 >
                   {item.label}
@@ -65,13 +65,13 @@ const Navbar = ({ darkMode, setDarkMode }) => {
                       dropdownOpen === index ? "block" : "hidden"
                     }`}
                   >
-                    {/* Flecha del dropdown */}
+                    {/* Flecha */}
                     <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-8 border-r-8 border-b-8 border-transparent border-b-surface"></div>
 
                     {item.dropdown.map((subItem, subIndex) => (
                       <li key={subIndex}>
                         <Link
-                          className="block px-4 py-2 text-text hover:bg-secondary hover:text-black rounded-md transition-colors"
+                          className="block px-4 py-2 text-base hover:bg-secondary hover:text-surface rounded-md transition-colors"
                           to={subItem.href}
                         >
                           {subItem.label}
@@ -94,7 +94,7 @@ const Navbar = ({ darkMode, setDarkMode }) => {
             </button>
             <Link
               to="/iniciar-sesion/login"
-              className="py-2 px-3 rounded-md bg-secondary text-black hover:opacity-90 transition-colors"
+              className="py-2 px-3 rounded-md bg-secondary text-surface hover:opacity-90 transition-colors"
             >
               Iniciar Sesión
             </Link>
@@ -115,7 +115,7 @@ const Navbar = ({ darkMode, setDarkMode }) => {
               {navItems.map((item, index) => (
                 <li key={index} className="py-4 w-full">
                   <Link
-                    className="text-text w-full block"
+                    className="text-base w-full block"
                     to={item.href}
                     onClick={() => handleMobileLinkClick(item, index)}
                   >
@@ -134,7 +134,7 @@ const Navbar = ({ darkMode, setDarkMode }) => {
                   </Link>
 
                   {item.dropdown && dropdownOpen === index && (
-                    <ul className="mt-2 ml-4 py-2 bg-secondary text-black rounded-md shadow-lg">
+                    <ul className="mt-2 ml-4 py-2 bg-secondary text-surface rounded-md shadow-lg">
                       {item.dropdown.map((subItem, subIndex) => (
                         <li key={subIndex}>
                           <Link
@@ -162,7 +162,7 @@ const Navbar = ({ darkMode, setDarkMode }) => {
               </button>
               <Link
                 to="/iniciar-sesion/login"
-                className="py-2 px-3 rounded-md bg-secondary text-black hover:opacity-90 transition-colors"
+                className="py-2 px-3 rounded-md bg-secondary text-surface hover:opacity-90 transition-colors"
               >
                 Iniciar Sesión
               </Link>

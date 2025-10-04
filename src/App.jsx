@@ -11,6 +11,7 @@ const App = () => {
         window.matchMedia("(prefers-color-scheme: dark)").matches)
   );
 
+  // Cambiar el <meta name="theme-color"> (para móviles)
   const changeThemeColor = (color) => {
     let themeColorMeta = document.querySelector('meta[name="theme-color"]');
 
@@ -26,33 +27,31 @@ const App = () => {
     if (darkMode) {
       document.documentElement.classList.add("dark");
       localStorage.setItem("theme", "dark");
-      // Para el modo oscuro, usamos un gris muy oscuro con un toque de azul
-      changeThemeColor("#030712"); // Simula dark:bg-gray-950/30
+      // 🔥 Usamos las variables definidas en index.css
+      changeThemeColor("#111111"); // equivale a var(--color-surface) dark
     } else {
       document.documentElement.classList.remove("dark");
       localStorage.setItem("theme", "light");
-      // Para el modo claro, usamos un blanco con un toque de azul claro
-      changeThemeColor("#ffffff"); // Simula bg-white/30
+      changeThemeColor("#ffffff"); // equivale a var(--color-surface) claro
     }
   }, [darkMode]);
 
+  // Escuchar cambios del sistema (auto dark/light)
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
     const handleChange = (e) => setDarkMode(e.matches);
 
     mediaQuery.addEventListener("change", handleChange);
-
     return () => mediaQuery.removeEventListener("change", handleChange);
   }, []);
-  // Componentes de Layout
+
+  // Layout base
   const ElementosPublicos = ({ children }) => (
-    <>
-      <main className="bg-background text-text min-h-screen transition-colors">
-        <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
-        <div className="max-w-7xl mx-auto pt-6 px-6">{children}</div>
-        <Footer />
-      </main>
-    </>
+    <div className="bg-surface text-text min-h-screen transition-colors duration-300">
+      <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
+      <main className="max-w-7xl mx-auto pt-6 px-6">{children}</main>
+      <Footer />
+    </div>
   );
 
   return (
@@ -62,7 +61,8 @@ const App = () => {
           path="/"
           element={
             <ElementosPublicos>
-              {/*  <Carrusel />
+              {/* Aquí irán tus secciones */}
+              {/* <Carrusel />
               <SeccionAppMovil />
               <InicioSeccion />
               <Testimonials /> */}
