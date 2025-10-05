@@ -1,5 +1,5 @@
 export const navItems = [
-  { label: "Inicio", href: "/" },
+  { label: "Inicio", href: "/click-sa/" },
   {
     label: "Sobre Nosotros",
     href: "#",
