@@ -41,7 +41,7 @@ const Navbar = ({ darkMode, setDarkMode }) => {
       <div className="container px-4 mx-auto relative text-sm">
         <div className="flex justify-between items-center">
           {/* Logo */}
-          <Link to="/" className="flex items-center flex-shrink-0">
+          <Link to="/click-sa/" className="flex items-center flex-shrink-0">
             <img
               className="h-9 w-54 mr-2 transition-opacity duration-300"
               src={darkMode ? logoTemaOscuro : logoTemaClaro}
