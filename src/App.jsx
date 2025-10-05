@@ -63,7 +63,7 @@ const App = () => {
     <Router>
       <Routes>
         <Route
-          path="/"
+          path="/click-sa/"
           element={
             <ElementosPublicos>
               <Carrusel />
