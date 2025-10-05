@@ -4,6 +4,9 @@ import Footer from "./components/layout/Footer";
 import { useEffect, useState } from "react";
 import Contacto from "./pages/Contacto";
 import NuestraEmpresa from "./pages/NuestraEmpresa";
+import Carrusel from "./pages/Carrusel";
+import NuestrosClientes from "./pages/NuestrosClientes";
+import Servicios from "./pages/Servicios";
 
 const App = () => {
   const [darkMode, setDarkMode] = useState(
@@ -63,11 +66,8 @@ const App = () => {
           path="/"
           element={
             <ElementosPublicos>
-              {/* Aquí irán tus secciones */}
-              {/* <Carrusel />
-              <SeccionAppMovil />
-              <InicioSeccion />
-              <Testimonials /> */}
+              <Carrusel />
+              <NuestrosClientes />
             </ElementosPublicos>
           }
         />
@@ -84,6 +84,14 @@ const App = () => {
           element={
             <ElementosPublicos>
               <NuestraEmpresa />
+            </ElementosPublicos>
+          }
+        />
+        <Route
+          path="/servicios"
+          element={
+            <ElementosPublicos>
+              <Servicios />
             </ElementosPublicos>
           }
         />

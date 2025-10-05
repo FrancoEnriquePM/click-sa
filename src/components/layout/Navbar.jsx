@@ -134,13 +134,14 @@ const Navbar = ({ darkMode, setDarkMode }) => {
                   </Link>
 
                   {item.dropdown && dropdownOpen === index && (
-                    <ul className="mt-2 ml-4 py-2 bg-secondary text-surface rounded-md shadow-lg">
+                    <ul className="mt-2 ml-4 py-2 bg-surface border border-border rounded-md shadow-lg transition-colors duration-300">
                       {item.dropdown.map((subItem, subIndex) => (
                         <li key={subIndex}>
                           <Link
-                            className="block px-4 py-2 text-sm hover:bg-primary hover:text-white rounded-md"
                             to={subItem.href}
                             onClick={handleSubmenuClick}
+                            className="block px-4 py-2 text-sm text-text rounded-md transition-colors duration-300 
+                     hover:bg-secondary/10 dark:hover:bg-secondary/20 hover:text-secondary"
                           >
                             {subItem.label}
                           </Link>

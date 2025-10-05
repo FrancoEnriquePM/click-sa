@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { communityLinks, platformLinks, resourcesLinks } from "../../constants";
+import { communityLinks, resourcesLinks } from "../../constants";
 
 const Footer = () => {
   return (
@@ -25,7 +25,7 @@ const Footer = () => {
         </div>
 
         {/* Certificaciones */}
-        <div>
+        {/* <div>
           <h3 className="text-md font-semibold mb-4 text-secondary">
             Certificaciones y estándares
           </h3>
@@ -41,12 +41,12 @@ const Footer = () => {
               </li>
             ))}
           </ul>
-        </div>
+        </div> */}
 
-        {/* Productos */}
+        {/* Servicios */}
         <div>
           <h3 className="text-md font-semibold mb-4 text-secondary">
-            Productos
+            Servicios
           </h3>
           <ul className="space-y-2">
             {communityLinks.map((link, index) => (

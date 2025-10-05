@@ -4,6 +4,9 @@ export default {
   darkMode: "class",
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['"Montserrat"', "sans-serif"], // Montserrat será la fuente predeterminada
+      },
       colors: {
         /* 🎨 Variables de color */
         primary: "var(--color-primary)",
