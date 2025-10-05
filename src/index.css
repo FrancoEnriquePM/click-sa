@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -6,7 +7,7 @@
   /* 🎨 Colores principales */
   --color-primary: #35384f; /* base */
   --color-primary-light: #646780;
-  --color-primary-soft: #ebeeff;
+  --color-primary-soft: #fbfbff;
   --color-primary-accent: #d0a617;
 
   --color-secondary: #dd4a4b; /* base */
@@ -38,4 +39,12 @@
   --color-text-muted: #a1a1aa;
   --color-surface: #111111;
   --color-border: #2d2d2d;
+}
+
+*,
+*::before,
+*::after {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-duration: 300ms;
+  transition-timing-function: ease-in-out;
 }

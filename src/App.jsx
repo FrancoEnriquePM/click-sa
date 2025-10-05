@@ -2,6 +2,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 import { useEffect, useState } from "react";
+import Contacto from "./pages/Contacto";
+import NuestraEmpresa from "./pages/NuestraEmpresa";
 
 const App = () => {
   const [darkMode, setDarkMode] = useState(
@@ -66,6 +68,22 @@ const App = () => {
               <SeccionAppMovil />
               <InicioSeccion />
               <Testimonials /> */}
+            </ElementosPublicos>
+          }
+        />
+        <Route
+          path="/sobre-nosotros/contacto"
+          element={
+            <ElementosPublicos>
+              <Contacto />
+            </ElementosPublicos>
+          }
+        />
+        <Route
+          path="/sobre-nosotros/nuestra-empresa"
+          element={
+            <ElementosPublicos>
+              <NuestraEmpresa />
             </ElementosPublicos>
           }
         />

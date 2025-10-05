@@ -1,7 +1,8 @@
 import { Menu, X, Sun, Moon, ChevronUp, ChevronDown } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import logo from "../../assets/logo_largo.png";
+import logoTemaClaro from "../../assets/logo_tema_claro.png";
+import logoTemaOscuro from "../../assets/logo_tema_oscuro.png";
 import { navItems } from "../../constants";
 
 const Navbar = ({ darkMode, setDarkMode }) => {
@@ -36,54 +37,59 @@ const Navbar = ({ darkMode, setDarkMode }) => {
   };
 
   return (
-    <nav className="sticky top-0 z-50 py-3 backdrop-blur-lg bg-primary/80 text-text border-b border-border transition-colors duration-300">
+    <nav className="sticky top-0 z-50 py-3 backdrop-blur-lg bg-primary/80 text-text border-border transition-colors duration-300">
       <div className="container px-4 mx-auto relative text-sm">
         <div className="flex justify-between items-center">
           {/* Logo */}
           <Link to="/" className="flex items-center flex-shrink-0">
-            <img className="h-9 w-54 mr-2" src={logo} alt="logo" />
+            <img
+              className="h-9 w-54 mr-2 transition-opacity duration-300"
+              src={darkMode ? logoTemaOscuro : logoTemaClaro}
+              alt="Logo"
+            />
           </Link>
 
           {/* Links Desktop */}
-          <ul className="hidden lg:flex ml-14 space-x-4">
-            {navItems.map((item, index) => (
-              <li
-                key={index}
-                className="relative group px-3"
-                onMouseEnter={() => setDropdownOpen(index)}
-                onMouseLeave={() => setDropdownOpen(null)}
-              >
-                <Link
-                  className="text-base cursor-pointer py-3 hover:text-secondary transition-colors"
-                  to={item.href}
+          <div className="hidden lg:flex flex-grow justify-center">
+            <ul className="flex space-x-4">
+              {navItems.map((item, index) => (
+                <li
+                  key={index}
+                  className="relative group px-3"
+                  onMouseEnter={() => setDropdownOpen(index)}
+                  onMouseLeave={() => setDropdownOpen(null)}
                 >
-                  {item.label}
-                </Link>
-                {item.dropdown && (
-                  <ul
-                    className={`absolute left-1/2 transform -translate-x-1/2 mt-2 w-96 py-2 backdrop-blur-lg bg-surface text-text rounded-lg shadow-2xl border border-border z-10 ${
-                      dropdownOpen === index ? "block" : "hidden"
-                    }`}
+                  <Link
+                    className="text-base cursor-pointer py-3 hover:text-secondary transition-colors"
+                    to={item.href}
                   >
-                    {/* Flecha */}
-                    <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-8 border-r-8 border-b-8 border-transparent border-b-surface"></div>
+                    {item.label}
+                  </Link>
+                  {item.dropdown && (
+                    <ul
+                      className={`absolute left-1/2 transform -translate-x-1/2 mt-2 w-96 py-2 backdrop-blur-lg bg-surface text-text rounded-lg shadow-2xl border border-border z-10 ${
+                        dropdownOpen === index ? "block" : "hidden"
+                      }`}
+                    >
+                      {/* Flecha */}
+                      <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-8 border-r-8 border-b-8 border-transparent border-b-surface"></div>
 
-                    {item.dropdown.map((subItem, subIndex) => (
-                      <li key={subIndex}>
-                        <Link
-                          className="block px-4 py-2 text-base hover:bg-secondary hover:text-surface rounded-md transition-colors"
-                          to={subItem.href}
-                        >
-                          {subItem.label}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </li>
-            ))}
-          </ul>
-
+                      {item.dropdown.map((subItem, subIndex) => (
+                        <li key={subIndex}>
+                          <Link
+                            className="block px-4 py-2 text-base hover:bg-secondary hover:text-surface rounded-md transition-colors"
+                            to={subItem.href}
+                          >
+                            {subItem.label}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
           {/* Botón tema + login (desktop) */}
           <div className="hidden lg:flex justify-center space-x-3 items-center text-center">
             <button
@@ -92,12 +98,6 @@ const Navbar = ({ darkMode, setDarkMode }) => {
             >
               {darkMode ? <Sun /> : <Moon />}
             </button>
-            <Link
-              to="/iniciar-sesion/login"
-              className="py-2 px-3 rounded-md bg-secondary text-surface hover:opacity-90 transition-colors"
-            >
-              Iniciar Sesión
-            </Link>
           </div>
 
           {/* Botón menu móvil */}
@@ -160,12 +160,6 @@ const Navbar = ({ darkMode, setDarkMode }) => {
               >
                 {darkMode ? <Sun /> : <Moon />}
               </button>
-              <Link
-                to="/iniciar-sesion/login"
-                className="py-2 px-3 rounded-md bg-secondary text-surface hover:opacity-90 transition-colors"
-              >
-                Iniciar Sesión
-              </Link>
             </div>
           </div>
         )}
