@@ -7,6 +7,11 @@ import NuestraEmpresa from "./pages/NuestraEmpresa";
 import Carrusel from "./pages/Carrusel";
 import NuestrosClientes from "./pages/NuestrosClientes";
 import Servicios from "./pages/Servicios";
+import PropuestaEconomica from "./pages/PropuestaEconomica";
+import Importaciones from "./pages/Importaciones";
+import Exportaciones from "./pages/Exportaciones";
+import AutorizacionesCertificaciones from "./pages/AutorizacionesCertificaciones";
+import ContactoRapido from "./pages/ContactoRapido";
 
 const App = () => {
   const [darkMode, setDarkMode] = useState(
@@ -54,7 +59,7 @@ const App = () => {
   const ElementosPublicos = ({ children }) => (
     <div className="bg-surface text-text min-h-screen transition-colors duration-300">
       <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
-      <main className="max-w-7xl mx-auto pt-6 px-6">{children}</main>
+      <main className="">{children}</main>
       <Footer />
     </div>
   );
@@ -63,11 +68,15 @@ const App = () => {
     <Router>
       <Routes>
         <Route
-          path="/click-sa/"
+          path="/"
           element={
             <ElementosPublicos>
               <Carrusel />
+              <Importaciones />
+              <Exportaciones />
+              <AutorizacionesCertificaciones />
               <NuestrosClientes />
+              <ContactoRapido />
             </ElementosPublicos>
           }
         />
@@ -92,6 +101,14 @@ const App = () => {
           element={
             <ElementosPublicos>
               <Servicios />
+            </ElementosPublicos>
+          }
+        />
+        <Route
+          path="/propuesta_economica"
+          element={
+            <ElementosPublicos>
+              <PropuestaEconomica />
             </ElementosPublicos>
           }
         />

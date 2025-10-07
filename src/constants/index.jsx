@@ -1,5 +1,5 @@
 export const navItems = [
-  { label: "Inicio", href: "/click-sa/" },
+  { label: "Inicio", href: "/" },
   {
     label: "Sobre Nosotros",
     href: "#",
@@ -9,18 +9,18 @@ export const navItems = [
     ],
   },
   { label: "Servicios", href: "/servicios" },
-  /* { label: "Certificaciones", href: "/certificaciones" },
-  { label: "Estandares", href: "/estandares" }, */
+  { label: "Propuesta económica", href: "/propuesta_economica" },
+  /* { label: "Estandares", href: "/estandares" }, */
 ];
 
-export const resourcesLinks = [
+export const nosotros = [
   { href: "/sobre-nosotros/nuestra-empresa", text: "Nuestra empresa" },
   { href: "/sobre-nosotros/contacto", text: "Contacto" },
 ];
 
-export const communityLinks = [{ href: "/servicios", text: "Servicios" }];
+export const servicios = [{ href: "/servicios", text: "Servicios" }];
 
-/* export const platformLinks = [
-  { href: "/certificaciones", text: "Certificaciones" },
-  { href: "/estandares", text: "Estandares" },
-]; */
+export const propuestas = [
+  { href: "/propuesta_economica", text: "Propuesta económica" },
+  /* { href: "/estandares", text: "Estandares" }, */
+];

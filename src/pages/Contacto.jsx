@@ -22,7 +22,7 @@ const Contacto = () => {
   return (
     <section
       id="contacto"
-      className="mt-9 bg-surface text-text transition-colors duration-300"
+      className="pt-12 pb-12 bg-surface text-text transition-colors duration-300"
     >
       {/* Título principal */}
       <h2 className="text-3xl sm:text-5xl lg:text-6xl text-center mt-6 tracking-wide">

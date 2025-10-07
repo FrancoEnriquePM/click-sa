@@ -41,20 +41,19 @@ const services = [
 const Servicios = () => {
   return (
     // Usa el estilo del contenedor de la sección de clientes
-    <section className="py-9 bg-surface transition-colors duration-300 font-sans">
+    <section className="pt-12 pb-12 bg-surface text-text transition-colors duration-300">
       <div className="max-w-6xl mx-auto px-6">
         {/* Título movido AFUERA del contenedor de contenido */}
-        <h2 className="text-3xl sm:text-5xl lg:text-6xl text-center tracking-wide mb-9 text-text">
+        <h2 className="text-3xl sm:text-5xl lg:text-6xl text-center mt-6 tracking-wide">
           Nuestra
-          {/* Usando secondary y font-bold según el estilo del título de clientes */}
-          <span className="text-secondary font-bold">
+          <span className="text-secondary font-semibold">
             {" "}
             Propuesta de Trabajo
           </span>
         </h2>
 
         {/* Contenedor de contenido: Eliminada la sombra y el borde */}
-        <div className="flex flex-wrap lg:flex-nowrap rounded-lg overflow-hidden">
+        <div className="flex flex-wrap lg:flex-nowrap rounded-lg overflow-hidden py-6">
           {/* Columna Izquierda: Imagen */}
           <div
             className="w-full lg:w-1/3 min-h-[500px] bg-cover bg-center"

@@ -12,9 +12,9 @@ const NuestrosClientes = () => {
   ];
 
   return (
-    <section className="py-9 bg-surface border-border transition-colors duration-300">
+    <section className="py-6 bg-surface border-border transition-colors duration-300">
       <div className="max-w-6xl mx-auto px-6 text-center">
-        <h2 className="text-3xl sm:text-5xl lg:text-6xl text-center tracking-wide mb-12">
+        <h2 className="text-3xl sm:text-5xl text-center tracking-wide mb-12">
           Nuestros <span className="text-secondary font-bold">Clientes</span>
         </h2>
 
@@ -28,7 +28,7 @@ const NuestrosClientes = () => {
               <img
                 src={logo.src}
                 alt={logo.alt}
-                className="h-24 md:h-28 lg:h-32 w-auto opacity-85 hover:opacity-100 transition-opacity duration-300 filter grayscale hover:grayscale-0"
+                className="h-32 md:h-36 lg:h-48 w-auto opacity-85 hover:opacity-100 transition-opacity duration-300 filter grayscale hover:grayscale-0"
               />
             </div>
           ))}
